@@ -1,0 +1,4 @@
+﻿<Properties StartupConfiguration="{F1FE9C86-106C-46BF-AF35-96AE7EDA1054}|Default">
+  <MonoDevelop.Ide.ItemProperties.TestMAUI PreferredExecutionTarget="MyAppleMacCatalystID" />
+  <MultiItemStartupConfigurations />
+</Properties>
