@@ -31,7 +31,7 @@ workflows:
             UPDATED_BUILD_NUMBER=$(($LATEST_BUILD_NUMBER + 1))
           fi
           
-          $DOTNET publish -f net7.0-android \
+          $DOTNET publish -f net6.0-android \
             -c Release \
             -p:AndroidKeyStore=True \
             -p:AndroidSigningKeyStore=$CM_KEYSTORE_PATH \
