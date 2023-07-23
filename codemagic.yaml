@@ -2,6 +2,12 @@ workflows:
    hello-world:
     name: Hello world workflow
 
+ vars:
+        DOTNET_PATH: $CM_BUILD_DIR/dotnet
+        DOTNET: $CM_BUILD_DIR/dotnet/dotnet
+        BUNDLE_ID: "com.companyname.testmaui"
+
+
    scripts:
       - name: Install dotnet sdk
         script: | 
