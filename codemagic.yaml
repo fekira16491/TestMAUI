@@ -1,3 +1,4 @@
+workflows:=
 maui-android:
     name: Dotnet MAUI Android
     max_build_duration: 120
