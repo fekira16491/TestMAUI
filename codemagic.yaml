@@ -1,5 +1,16 @@
-﻿workflows:
+workflows:
    hello-world:
     name: Hello world workflow
-    scripts:
-        - echo "Hello World!"
+
+   scripts:
+      - name: Install dotnet sdk
+        script: | 
+          wget https://dot.net/v1/dotnet-install.sh
+          chmod +x dotnet-install.sh
+          ./dotnet-install.sh --install-dir $DOTNET_PATH
+      - name: Install MAUI
+        script: | 
+          $DOTNET_BIN nuget locals all --clear 
+          $DOTNET_BIN workload install ios maui \
+            --source https://aka.ms/dotnet6/nuget/index.json \
+            --source https://api.nuget.org/v3/index.json     
