@@ -5,12 +5,10 @@ maui-android:
     environment:
       android_signing:
         - code
-      groups:
-        - google_play
       vars:
         DOTNET_PATH: $CM_BUILD_DIR/dotnet
         DOTNET: $CM_BUILD_DIR/dotnet/dotnet
-        PACKAGE_NAME: "io.codemagic.maui.weather"
+        PACKAGE_NAME: "com.companyname.testmaui"
     scripts:
       - name: Install dotnet sdk
         script: | 
