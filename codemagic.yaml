@@ -24,15 +24,14 @@ workflows:
             --source https://api.nuget.org/v3/index.json      
       - name: Build
         script: | 
-          LATEST_BUILD_NUMBER= 1
+          LATEST_BUILD_NUMBER = 1
           if [ -z $LATEST_BUILD_NUMBER ]; then
             UPDATED_BUILD_NUMBER=1
           else
             UPDATED_BUILD_NUMBER=$(($LATEST_BUILD_NUMBER + 1))
           fi
           
-          cd src
-          $DOTNET_BIN publish -f net6.0-android \
+          $DOTNET publish -f net7.0-android \
             -c Release \
             -p:AndroidKeyStore=True \
             -p:AndroidSigningKeyStore=$CM_KEYSTORE_PATH \
