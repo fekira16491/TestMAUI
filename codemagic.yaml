@@ -19,7 +19,7 @@ workflows:
       - name: Install MAUI
         script: | 
           $DOTNET nuget locals all --clear 
-          $DOTNET_BIN workload install android maui \
+          $DOTNET workload install android maui \
             --source https://aka.ms/dotnet6/nuget/index.json \
             --source https://api.nuget.org/v3/index.json      
       - name: Build
