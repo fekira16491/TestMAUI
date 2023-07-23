@@ -74,7 +74,7 @@ workflows:
       vars:
         DOTNET_PATH: $CM_BUILD_DIR/dotnet
         DOTNET: $CM_BUILD_DIR/dotnet/dotnet
-        PACKAGE_NAME: "io.codemagic.maui.weather"
+        PACKAGE_NAME: "com.companyname.testmaui"
     scripts:
       - name: Install dotnet sdk
         script: | 
@@ -109,8 +109,4 @@ workflows:
             -o ../artifacts
     artifacts:
         - /Users/builder/clone/artifacts/*Signed.aab
-    publishing:
-      google_play:
-        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-        track: internal
-        submit_as_draft: true
+    
