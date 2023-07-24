@@ -3,6 +3,64 @@ workflows:
     name: Dotnet MAUI Android
     max_build_duration: 120
     instance_type: mac_mini_m1
+    triggering:
+    cancel_previous_builds: true
+    events:
+      - push 
+      - pull_request
+      - tag
+    branch_patterns:
+      - pattern: 'master'
+        include: true
+        source: true
+    tag_patterns:
+      - pattern: '*'
+        include: true
+    when:
+      changeset:
+        excludes:
+          - '**/*.md'
+    environment:
+      android_signing:
+        - code
+      vars:
+        DOTNET_PATH: $CM_BUILD_DIR/dotnet
+        DOTNET: $CM_BUILD_DIR/dotnet/dotnet
+        PACKAGE_NAME: com.companyname.testmaui
+    scripts:
+      - name: Install dotnet sdk
+        script: |
+          wget https://dot.net/v1/dotnet-install.sh
+          chmod +x dotnet-install.sh
+          ./dotnet-install.sh --channel 7.0 --install-dir $DOTNET_PATH
+      - name: Install MAUI
+        script: |
+          $DOTNET nuget locals all --clear 
+          $DOTNET workload install android maui \
+            --source https://aka.ms/dotnet7/nuget/index.json \
+            --source https://api.nuget.org/v3/index.json      
+      - name: Build the app
+        script: | 
+          cd TestMAUI
+          $DOTNET publish -f net7.0-android \
+            -c Release \
+            -p:AndroidKeyStore=True \
+            -p:AndroidSigningKeyStore=$CM_KEYSTORE_PATH \
+            -p:AndroidSigningKeyAlias=$CM_KEY_ALIAS \
+            -p:AndroidSigningKeyPass=$CM_KEY_PASSWORD \
+            -p:AndroidSigningStorePass=$CM_KEYSTORE_PASSWORD \
+            -p:ApplicationVersion=$UPDATED_BUILD_NUMBER \
+            -p:ApplicationDisplayVersion="1.0.0" \
+            -o ../artifacts
+    artifacts:
+      - /Users/builder/clone/artifacts/*Signed.apk
+
+
+  workflows:
+  maui-android:
+    name: Dotnet MAUI Android
+    max_build_duration: 120
+    instance_type: mac_mini_m1
     environment:
       android_signing:
         - code
