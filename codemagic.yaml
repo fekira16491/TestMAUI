@@ -8,10 +8,6 @@ workflows:
       - push 
       - pull_request
       - tag
-    branch_patterns:
-      - pattern: 'main'
-        include: true
-        source: true
     cancel_previous_builds: true
     environment:
       android_signing:
