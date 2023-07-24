@@ -22,20 +22,8 @@ workflows:
           $DOTNET workload install android maui \
             --source https://aka.ms/dotnet7/nuget/index.json \
             --source https://api.nuget.org/v3/index.json      
-      - name: Publish to App Center
+    - name: Build the app
        script: | 
-        #!/usr/bin/env zsh
-        echo 'Installing App Center CLI tools'
-        npm install -g appcenter-cli
-        echo "Publishing $ipaPath to App Center"
-        appcenter distribute release \
-            --group Collaborators \
-            --file $ARTIFACT_PATH \
-            --release-notes 'App submission via Codemagic' \
-            --app $fekira12@gmail.com \
-            --token $fcf1b3e7bb4aaf08118bf394c984759ef3b7653b \
-            --quiet
-
           $DOTNET publish -f net7.0-android \
             -c Release \
             -p:AndroidKeyStore=True \
