@@ -1,3 +1,4 @@
+---
 workflows:
   maui-android:
     name: Dotnet MAUI Android
@@ -9,21 +10,21 @@ workflows:
       vars:
         DOTNET_PATH: $CM_BUILD_DIR/dotnet
         DOTNET: $CM_BUILD_DIR/dotnet/dotnet
-        PACKAGE_NAME: "com.companyname.testmaui"
+        PACKAGE_NAME: com.companyname.testmaui
     scripts:
       - name: Install dotnet sdk
-        script: | 
+        script: |
           wget https://dot.net/v1/dotnet-install.sh
           chmod +x dotnet-install.sh
           ./dotnet-install.sh --channel 7.0 --install-dir $DOTNET_PATH
       - name: Install MAUI
-        script: | 
+        script: |
           $DOTNET nuget locals all --clear 
           $DOTNET workload install android maui \
             --source https://aka.ms/dotnet7/nuget/index.json \
             --source https://api.nuget.org/v3/index.json      
-    - name: Build the app
-       script: | 
+      - name: Build the app
+        script: | 
           $DOTNET publish -f net7.0-android \
             -c Release \
             -p:AndroidKeyStore=True \
@@ -35,4 +36,4 @@ workflows:
             -p:ApplicationDisplayVersion="1.0.0" \
             -o ../artifacts
     artifacts:
-        - /Users/builder/clone/artifacts/*Signed.apk
+      - /Users/builder/clone/artifacts/*Signed.apk
