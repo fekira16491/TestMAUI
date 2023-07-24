@@ -6,15 +6,15 @@ workflows:
     triggering:
       cancel_previous_builds: true
       events:
-       - push 
-       - pull_request
-       - tag
+        - push
+        - pull_request
+        - tag
       branch_patterns:
-       - pattern: '*'
+        - pattern: "*"
           include: true
           source: true
       tag_patterns:
-        - pattern: '*'
+        - pattern: "*"
           include: true
     environment:
       android_signing:
@@ -36,7 +36,7 @@ workflows:
             --source https://aka.ms/dotnet7/nuget/index.json \
             --source https://api.nuget.org/v3/index.json      
       - name: Build the app
-        script: | 
+        script: |
           cd TestMAUI
           $DOTNET publish -f net7.0-android \
             -c Release \
