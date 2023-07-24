@@ -23,12 +23,10 @@ workflows:
             --source https://aka.ms/dotnet7/nuget/index.json \
             --source https://api.nuget.org/v3/index.json      
       - name: Publish to App Center
-      script: | 
+       script: | 
         #!/usr/bin/env zsh
-
         echo 'Installing App Center CLI tools'
         npm install -g appcenter-cli
-
         echo "Publishing $ipaPath to App Center"
         appcenter distribute release \
             --group Collaborators \
