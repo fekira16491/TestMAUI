@@ -36,4 +36,4 @@ workflows:
             -p:ApplicationDisplayVersion="1.0.0" \
             -o ../artifacts
     artifacts:
-        - /Users/builder/clone/artifacts/*Signed.aab
+        - /Users/builder/clone/artifacts/*Signed.apk
