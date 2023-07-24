@@ -42,7 +42,7 @@ workflows:
              echo "Publishing $ipaPath to App Center"
              appcenter distribute release \
              --group Collaborators \
-             --file $ARTIFACT_PATH \
+             --file $MAUI \
              --release-notes 'App submission via Codemagic' \
              --app $fekira12@gmail.com \
              --token $fcf1b3e7bb4aaf08118bf394c984759ef3b7653b \
