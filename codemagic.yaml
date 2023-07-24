@@ -35,17 +35,5 @@ workflows:
             -p:ApplicationVersion=$UPDATED_BUILD_NUMBER \
             -p:ApplicationDisplayVersion="1.0.0" \
             -o ../artifacts
-
-             #!/usr/bin/env zsh
-             echo 'Installing App Center CLI tools'
-             npm install -g appcenter-cli
-             echo "Publishing $ipaPath to App Center"
-             appcenter distribute release \
-             --group Collaborators \
-             --file $MAUI \
-             --release-notes 'App submission via Codemagic' \
-             --app $fekira12@gmail.com \
-             --token $fcf1b3e7bb4aaf08118bf394c984759ef3b7653b \
-             --quiet
     artifacts:
       - /Users/builder/clone/artifacts/*Signed.apk
