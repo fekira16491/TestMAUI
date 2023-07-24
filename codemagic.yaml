@@ -23,7 +23,9 @@ workflows:
             --source https://aka.ms/dotnet7/nuget/index.json \
             --source https://api.nuget.org/v3/index.json      
       - name: Build
-        script: | 
+        script:  >
+        export PATH=/Library/Frameworks/Mono.framework/Versions/Current/bin/:${PATH} && 
+        sh caketemplate/build.sh build-android.cake 
 
           $DOTNET publish -f net7.0-android \
             -c Release \
