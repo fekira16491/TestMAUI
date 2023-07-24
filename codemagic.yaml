@@ -4,7 +4,6 @@ workflows:
     max_build_duration: 120
     instance_type: mac_mini_m1
     triggering:
-    cancel_previous_builds: true
     events:
       - push 
       - pull_request
@@ -13,6 +12,7 @@ workflows:
       - pattern: 'main'
         include: true
         source: true
+    cancel_previous_builds: true
     environment:
       android_signing:
         - code
