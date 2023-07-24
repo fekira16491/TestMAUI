@@ -10,7 +10,7 @@ workflows:
        - pull_request
        - tag
       branch_patterns:
-        - pattern: 'main'
+       - pattern: '*'
           include: true
           source: true
       tag_patterns:
