@@ -8,7 +8,6 @@ workflows:
       - push 
       - pull_request
       - tag
-    cancel_previous_builds: true
     environment:
       android_signing:
         - code
