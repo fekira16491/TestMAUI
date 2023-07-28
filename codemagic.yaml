@@ -51,3 +51,4 @@ workflows:
             -o ../artifacts
     artifacts:
       - /Users/builder/clone/artifacts/*Signed.apk
+      
